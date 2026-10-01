@@ -1,0 +1,25 @@
+# TypeScript for Deck
+
+`typescript-language-server`, for `.ts` and `.tsx`. A project is anything with a `tsconfig.json`.
+
+```sh
+npm i -g typescript-language-server typescript
+```
+
+Both are needed: the server is a wrapper around the compiler, not a replacement for it.
+
+The JavaScript definition names the same `serverId`, so one server session serves both languages
+in a project that mixes them rather than two processes analysing the same files.
+
+## Installing it
+
+From inside Deck: **Settings -> Plugins -> Browse**, pick it, and it loads straight away.
+
+By hand: copy this folder into `%APPDATA%\Deck\languages\` (`Deck-Dev` for a debug build).
+`docs/languages.md` in the Deck repository documents the format.
+
+## What a definition can and cannot do
+
+It is **data**, not code. `language.json` is parsed field by field and never executed, which is
+why a language is a different kind of thing from a plugin even though both are folders Deck
+reads at startup. The worst a malformed one can do is skip itself.
